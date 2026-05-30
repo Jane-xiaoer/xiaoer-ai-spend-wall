@@ -1,0 +1,8 @@
+node_modules/
+data/
+.env
+config.json
+.claude/
+.DS_Store
+*.log
+scripts/com.xiaoer.aistudio-spend.plist

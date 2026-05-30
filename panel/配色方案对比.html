@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="utf-8" />
+<title>小耳花销墙 · 中间色候选</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font: 13px/1.5 -apple-system, "PingFang SC", system-ui, sans-serif; background: #e9e6ef; padding: 26px; -webkit-font-smoothing: antialiased; }
+  .page-h { text-align: center; margin-bottom: 20px; }
+  .page-h h1 { font-size: 19px; font-weight: 800; color: #2a2530; }
+  .page-h p { color: #6f6577; font-size: 12.5px; margin-top: 5px; }
+  .row { display: flex; gap: 20px; justify-content: center; align-items: flex-start; flex-wrap: wrap; }
+  .col { width: 340px; }
+  .col > .label { text-align: center; font-weight: 800; font-size: 13.5px; margin-bottom: 9px; color: #2a2530; }
+  .col > .label small { display:block; font-weight: 600; color: #6f6577; font-size: 11px; margin-top: 1px; }
+
+  .panel { border-radius: 24px; padding: 16px; box-shadow: 0 10px 28px rgba(80,50,90,.18); }
+  .ph { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 13px; padding: 0 2px; }
+  .ph h2 { font-size: 15px; font-weight: 800; }
+  .ph .upd { font-size: 10px; font-weight: 600; opacity: .6; }
+  .card { border-radius: 19px; padding: 13px 14px; margin-bottom: 10px; }
+  .top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 9px; }
+  .name { font-size: 14.5px; font-weight: 800; display: flex; align-items: center; gap: 7px; }
+  .dot { width: 8px; height: 8px; border-radius: 50%; box-shadow: 0 0 0 3px rgba(255,255,255,.3); }
+  .tag { font-size: 9.5px; font-weight: 700; padding: 2px 8px; border-radius: 999px; background: rgba(255,255,255,.4); }
+  .cost { font-size: 22px; font-weight: 800; letter-spacing: -.02em; }
+  .cost small { font-size: 10px; font-weight: 600; opacity: .6; margin-left: 5px; }
+  .verdict { font-size: 11.5px; font-weight: 700; padding: 8px 10px; border-radius: 10px; margin-bottom: 9px; display: flex; align-items: center; gap: 6px; background: rgba(255,255,255,.45); }
+  .verdict .pc { margin-left: auto; opacity: .8; font-size: 10px; }
+  .bar { height: 7px; background: rgba(0,0,0,.13); border-radius: 5px; overflow: hidden; margin: 5px 0; }
+  .bar > i { display: block; height: 100%; border-radius: 5px; }
+  .barlabel { display: flex; justify-content: space-between; font-size: 10px; font-weight: 600; opacity: .72; margin-top: 6px; }
+  .grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 5px; margin-top: 10px; }
+  .grid .cell { background: rgba(255,255,255,.4); border-radius: 8px; padding: 6px 3px; text-align: center; }
+  .grid .cell .k { font-size: 9px; opacity: .6; font-weight: 600; }
+  .grid .cell .v { font-size: 10.5px; font-weight: 800; margin-top: 2px; }
+  .pf { display: flex; justify-content: space-between; align-items: center; margin-top: 3px; padding: 0 2px; }
+  .pf .total { font-size: 10.5px; font-weight: 700; } .pf .total b { font-size: 17px; }
+  .pf button { border: 0; border-radius: 10px; padding: 7px 13px; font-weight: 800; font-size: 10.5px; }
+
+  /* 中间卡(Codex)在深色块上的次级元素处理——本轮全是亮色卡，深字即可，无需特殊 */
+
+  /* ===== V1 · 粉底 + 薄荷中卡 ===== */
+  .V1 .panel { background: #ecc4ee; color: #2a2530; }
+  .V1 .card.claude { background: #f8cdb4; color: #4a2c1e; }
+  .V1 .card.codex  { background: #9adcb8; color: #14402c; }   /* 薄荷绿 */
+  .V1 .card.gemini { background: #c6d2f6; color: #232a45; }
+  .V1 .pf button { background: #2a2530; color: #ecc4ee; }
+
+  /* ===== V2 · 粉底 + 奶黄中卡 ===== */
+  .V2 .panel { background: #ecc4ee; color: #2a2530; }
+  .V2 .card.claude { background: #f8cdb4; color: #4a2c1e; }
+  .V2 .card.codex  { background: #f3d873; color: #463500; }   /* 奶黄 */
+  .V2 .card.gemini { background: #c6d2f6; color: #232a45; }
+  .V2 .pf button { background: #2a2530; color: #ecc4ee; }
+
+  /* ===== V3 · 黄绿底 + 珊瑚中卡 ===== */
+  .V3 .panel { background: #d4e80d; color: #1a1f04; }
+  .V3 .card.claude { background: #e0a82e; color: #2a1d00; }
+  .V3 .card.codex  { background: #f4715b; color: #4a1006; }   /* 珊瑚红 */
+  .V3 .card.gemini { background: #2ec6e0; color: #042830; }
+  .V3 .pf button { background: #1a1f04; color: #d4e80d; }
+
+  /* ===== V4 · 黄绿底 + 品红中卡 ===== */
+  .V4 .panel { background: #d4e80d; color: #1a1f04; }
+  .V4 .card.claude { background: #e0a82e; color: #2a1d00; }
+  .V4 .card.codex  { background: #ec5a96; color: #4a0a2a; }   /* 品红 */
+  .V4 .card.gemini { background: #2ec6e0; color: #042830; }
+  .V4 .pf button { background: #1a1f04; color: #d4e80d; }
+</style>
+</head>
+<body>
+  <div class="page-h">
+    <h1>👂 中间卡(Codex)换色 · 让三块亮度齐平不塌</h1>
+    <p>你喜欢的 A 粉底 / C 黄绿底各两个中间色候选。三块亮度接近 = 协调。挑一个，或说别的颜色。</p>
+  </div>
+  <div class="row" id="row"></div>
+
+<script>
+const STATE = __STATE__;
+const money = n => "$" + (n||0).toFixed(2);
+const tok = n => { n=n||0; if(n>=1e9)return (n/1e9).toFixed(2)+"B"; if(n>=1e6)return (n/1e6).toFixed(1)+"M"; if(n>=1e3)return (n/1e3).toFixed(1)+"K"; return ""+n; };
+const barCol = p => p>=.85?"#d8504f":p>=.5?"#c98a12":"#2bb673";
+const dotCol = {green:"#2bb673",yellow:"#e0a82e",red:"#d8504f",idle:"#5a6fd6"};
+function grid(p,kind){const b=p.stats.byTime;if(!b||!b.month)return"";const f=x=>kind==="money"?money(x.cost):tok(x.tokens)+" tok";const c=(k,x)=>`<div class="cell"><div class="k">${k}</div><div class="v">${f(x||{})}</div></div>`;return `<div class="grid">${c("今日",b.today)}${c("昨日",b.yesterday)}${c("本周",b.week)}${c("本月",b.month)}</div>`;}
+function cardHTML(p){
+  let body="";
+  if(p.name==="Gemini"){
+    body += `<div class="cost">${money(p.costUSD)}<small>本月真实花费</small></div>`;
+    if(p.limit&&p.limit.pct!=null) body += `<div class="barlabel"><span>消费上限</span><b>${(p.limit.pct*100).toFixed(0)}%</b></div><div class="bar"><i style="width:${Math.min(100,p.limit.pct*100)}%;background:${barCol(p.limit.pct)}"></i></div>`;
+    body += grid(p,"money");
+  } else {
+    const u=p.utilization;
+    if(u) body += `<div class="verdict">${u.emoji} ${u.label}<span class="pc">${u.pct!=null?(u.pct*100).toFixed(0)+"%":""}</span></div>`;
+    for(const w of (p.stats.windows||[])) body += `<div class="barlabel"><span>${w.name}</span><b>${(w.pct*100).toFixed(0)}%</b></div><div class="bar"><i style="width:${Math.min(100,w.pct*100)}%;background:${barCol(w.pct)}"></i></div>`;
+    body += grid(p,"tokens");
+  }
+  const dot=(p.name!=="Gemini"&&p.utilization)?p.utilization.color:p.color;
+  return `<div class="card ${p.name.toLowerCase()}"><div class="top"><span class="name"><i class="dot" style="background:${dotCol[dot]}"></i>${p.name}</span><span class="tag">${p.costNote}</span></div>${body}</div>`;
+}
+function panelHTML(){const gem=STATE.providers.find(p=>p.name==="Gemini");return `<div class="panel"><div class="ph"><h2>👂 小耳 AI 花销墙</h2><span class="upd">${STATE.period}</span></div>${STATE.providers.map(cardHTML).join("")}<div class="pf"><span class="total">本月真实花费 <b>${money(gem?gem.costUSD:0)}</b></span><button>🔄 刷新</button></div></div>`;}
+const variants=[["V1","粉底 · 薄荷中卡","🌿 清新协调"],["V2","粉底 · 奶黄中卡","🧈 暖调统一"],["V3","黄绿底 · 珊瑚中卡","🪸 三亮色撞色"],["V4","黄绿底 · 品红中卡","🌸 高能撞色"]];
+document.getElementById("row").innerHTML = variants.map(([k,t,s])=>`<div class="col ${k}"><div class="label">${t}<small>${s}</small></div>${panelHTML()}</div>`).join("");
+</script>
+</body>
+</html>

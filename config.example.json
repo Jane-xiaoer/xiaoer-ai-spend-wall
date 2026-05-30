@@ -1,0 +1,18 @@
+{
+  "geminiMeterPort": 19877,
+  "geminiBackend": "google",
+  "geminiSpendCapUSD": 50,
+  "geminiRealAlertNTD": 1500,
+  "geminiRealDailyJumpNTD": 500,
+  "codexModel": "gpt-5.5",
+  "claudeWindowTokenLimit": "max",
+  "thresholds": {
+    "yellow": 0.5,
+    "red": 0.85
+  },
+  "claudeDetailUrl": "https://claude.ai/settings/usage",
+  "codexDetailUrl": "https://platform.openai.com/usage",
+  "geminiDetailUrl": "https://aistudio.google.com/spend",
+  "ntdToCny": 0.227,
+  "aistudioProjects": []
+}

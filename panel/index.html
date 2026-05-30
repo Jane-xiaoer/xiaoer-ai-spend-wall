@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800;900&family=Rubik:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #18130f;
+    --cream: #f6efe0;
+    --claude: #ffc83d;   /* 金黄 */
+    --codex:  #ff8d6b;   /* 珊瑚 */
+    --gemini: #7cd6e8;
+    --green: #1f9d57; --yellow: #d98a00; --red: #e23b3b; --idle: #4b63d6;
+    --shadow: 4px 4px 0 var(--ink);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: "Rubik", -apple-system, "PingFang SC", system-ui, sans-serif;
+    background: var(--cream); color: var(--ink); padding: 18px; user-select: none;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, .name, .cost, .num { font-family: "Outfit", sans-serif; }
+
+  header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; padding: 0 2px; }
+  header h1 { font-size: 18px; font-weight: 900; letter-spacing: -.02em; }
+  header .upd { font-size: 11px; font-weight: 600; color: #8a8073; }
+
+  .card {
+    border: 2.5px solid var(--ink); border-radius: 18px; padding: 15px 16px; margin-bottom: 14px;
+    box-shadow: var(--shadow); color: var(--ink);
+  }
+  .card.claude { background: var(--claude); }
+  .card.codex  { background: var(--codex); }
+  .card.gemini { background: var(--gemini); }
+
+  .top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 11px; }
+  .name { font-size: 17px; font-weight: 900; display: flex; align-items: center; gap: 8px; letter-spacing: -.01em; }
+  .dot { width: 11px; height: 11px; border-radius: 50%; border: 2px solid var(--ink); }
+  .dot.green { background: var(--green); } .dot.yellow { background: var(--yellow); }
+  .dot.red { background: var(--red); } .dot.idle { background: var(--idle); }
+  .tag { font-size: 10.5px; font-weight: 700; padding: 3px 9px; border: 2px solid var(--ink); border-radius: 999px; background: rgba(255,255,255,.55); }
+
+  .cost { font-size: 30px; font-weight: 900; letter-spacing: -.03em; line-height: 1; }
+  .cost small { font-size: 11px; font-weight: 600; font-family: "Rubik"; margin-left: 7px; opacity: .7; }
+
+  .verdict {
+    font-size: 13px; font-weight: 700; padding: 9px 12px; border: 2px solid var(--ink); border-radius: 11px;
+    margin-bottom: 12px; display: flex; align-items: center; gap: 7px; background: rgba(255,255,255,.6);
+  }
+  .verdict .pc { margin-left: auto; font-family: "Outfit"; font-weight: 800; }
+  .verdict.idle .pc { color: var(--idle); } .verdict.red .pc { color: var(--red); }
+  .verdict.yellow .pc { color: var(--yellow); } .verdict.green .pc { color: var(--green); }
+
+  .barwrap { margin: 9px 0; }
+  .barlabel { display: flex; justify-content: space-between; font-size: 12px; font-weight: 600; margin-bottom: 4px; }
+  .barlabel b { font-family: "Outfit"; font-weight: 800; }
+  .bar { height: 12px; background: rgba(255,255,255,.55); border: 2px solid var(--ink); border-radius: 7px; overflow: hidden; }
+  .bar > i { display: block; height: 100%; }
+  .reset { font-size: 10.5px; font-weight: 600; opacity: .6; margin-top: 3px; }
+
+  .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-top: 13px; }
+  .grid .cell { background: rgba(255,255,255,.55); border: 2px solid var(--ink); border-radius: 11px; padding: 9px 5px; text-align: center; }
+  .grid .cell .k { font-size: 10px; font-weight: 600; opacity: .65; }
+  .grid .cell .v { font-family: "Outfit"; font-size: 13px; font-weight: 800; margin-top: 3px; }
+
+  .proj { font-size: 12px; font-weight: 600; margin-top: 10px; opacity: .85; }
+  .proj b { font-family: "Outfit"; font-weight: 800; opacity: 1; }
+  .tools { margin-top: 11px; font-size: 11.5px; font-weight: 600; }
+  .tools .t { display: flex; justify-content: space-between; padding: 3px 0; }
+  .err { font-size: 11px; font-weight: 700; color: var(--red); margin-top: 7px; }
+
+  footer { display: flex; align-items: center; justify-content: space-between; margin-top: 2px; padding: 0 2px; }
+  footer .total { font-size: 12px; font-weight: 600; }
+  footer .total b { font-family: "Outfit"; font-size: 22px; font-weight: 900; letter-spacing: -.02em; }
+  footer .total small { color: #8a8073; }
+  footer button {
+    font-family: "Outfit"; background: var(--ink); color: var(--cream); border: 2.5px solid var(--ink);
+    border-radius: 12px; padding: 9px 16px; font-weight: 800; font-size: 12px; cursor: pointer; box-shadow: var(--shadow);
+  }
+  footer button:active { transform: translate(2px, 2px); box-shadow: 1px 1px 0 var(--ink); }
+</style>
+</head>
+<body>
+  <header>
+    <h1>👂 Xiaoer AI Spend</h1>
+    <span class="upd" id="upd"></span>
+  </header>
+  <div id="cards"></div>
+  <footer>
+    <div class="total">This month <b id="total">—</b><small> · Gemini metered</small></div>
+  </footer>
+<script src="panel.js"></script>
+</body>
+</html>

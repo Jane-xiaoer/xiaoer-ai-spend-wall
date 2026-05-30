@@ -1,0 +1,7 @@
+{
+  "monthly": [
+    { "month": "2026-04", "totalTokens": 1053800000, "totalCost": 741.77, "modelsUsed": ["claude-opus-4-7"] },
+    { "month": "2026-05", "totalTokens": 3250223773, "totalCost": 2297.42, "modelsUsed": ["claude-opus-4-7","claude-sonnet-4-6"] }
+  ],
+  "totals": { "totalCost": 3099.15 }
+}

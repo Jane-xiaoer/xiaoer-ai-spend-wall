@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key><string>com.xiaoer.gemini-meter</string>
+  <key>ProgramArguments</key>
+  <array>
+    <string>__NODE__</string>
+    <string>__PROJECT_DIR__/gemini-meter/server.js</string>
+  </array>
+  <key>RunAtLoad</key><true/>
+  <key>KeepAlive</key><true/>
+  <key>StandardOutPath</key><string>/tmp/xiaoer-gemini-meter.log</string>
+  <key>StandardErrorPath</key><string>/tmp/xiaoer-gemini-meter.err</string>
+  <key>EnvironmentVariables</key>
+  <dict>
+    <key>SSL_CERT_FILE</key><string></string>
+    <key>HTTPS_PROXY</key><string>__HTTPS_PROXY__</string>
+    <key>HTTP_PROXY</key><string>__HTTPS_PROXY__</string>
+    <key>NO_PROXY</key><string>localhost,127.0.0.1,::1</string>
+  </dict>
+</dict>
+</plist>
